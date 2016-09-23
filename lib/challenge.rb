@@ -16,13 +16,14 @@ MORSE_CODE = {
 ## DO NOT CHANGE ANYTHING ABOVE THIS LINE
 
 def decode_morse(morse_code)
-  letters = morse_code.split(' ')
+  # strip leading/trailing whitespace
+  letters = morse_code.strip.gsub("   ", " space ").split(" ")
   message = ''
   letters.each do |i|
     if MORSE_CODE.key?(i)
       message += MORSE_CODE[i]
-    elsif i == ' ' || i == '   '
-      message += i
+    elsif i == 'space'
+      message += ' '
     else
       message += '*'
     end
