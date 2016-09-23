@@ -16,7 +16,18 @@ MORSE_CODE = {
 ## DO NOT CHANGE ANYTHING ABOVE THIS LINE
 
 def decode_morse(morse_code)
-  # Your code here
+  letters = morse_code.split(' ')
+  message = ''
+  letters.each do |i|
+    if MORSE_CODE.key?(i)
+      message += MORSE_CODE[i]
+    elsif i == ' ' || i == '   '
+      message += i
+    else
+      message += '*'
+    end
+  end
+  message
 end
 
 def parse_bits(bits)
